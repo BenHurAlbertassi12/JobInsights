@@ -12,11 +12,9 @@ def read(path: str) -> List[Dict]:
 
 def get_unique_job_types(path: str) -> List[str]:
     read_list = read(path)
-    job_types = {job: ["job_type"] for job in read_list}
+    return {job: ["job_type"] for job in read_list}
     #  notas_por_genero = {genre: [] for genre in game_genres}
     #  retirado do lecture/cs/1.2
-
-    return job_types
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
