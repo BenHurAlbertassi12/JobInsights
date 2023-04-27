@@ -11,21 +11,12 @@ def read(path: str) -> List[Dict]:
 
 
 def get_unique_job_types(path: str) -> List[str]:
-    """Checks all different job types and returns a list of them
+    read_list = read(path)
+    job_types = {job: ["job_type"] for job in read_list}
+    #  notas_por_genero = {genre: [] for genre in game_genres}
+    #  retirado do lecture/cs/1.2
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    raise NotImplementedError
+    return job_types
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
