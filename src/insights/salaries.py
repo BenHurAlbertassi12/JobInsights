@@ -41,18 +41,14 @@ def filter_by_salary_range(
     jobs: List[dict],
     salary: Union[str, int]
 ) -> List[Dict]:
-    """Filters a list of jobs by salary range
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    raise NotImplementedError
+    salary_range = []
+    for job in jobs:
+        try:
+            if int(job["min_salary"]) <= int(salary) <= int(job["max_salary"]):
+                #  converte geral pra inteiro e compara
+                salary_range.append(job)
+                # add um trabalho na lista de trabalhos pelo salario comparado
+        except (TypeError, ValueError):
+            pass
+    return salary_range
