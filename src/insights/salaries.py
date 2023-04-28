@@ -18,29 +18,23 @@ def get_min_salary(path: str) -> int:
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
-    """Checks if a given salary is in the salary range of a given job
+    try:
+        max_salary = int(job["max_salary"])
+        min_salary = int(job["min_salary"])
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+        if max_salary < min_salary:
+            raise TypeError()
+        # typeerror se o salario maximo for maior que o minimou
+        # ou se não der para converter para inteiro
+        # o exercicio só passou depois que fiz essa converção
+        salary = int(salary)
+        # converte o salary para inteiro
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    raise NotImplementedError
+        return min_salary <= salary <= max_salary
+    except (TypeError, KeyError, ValueError):
+        #  marcações de erros do course "Lidando com exceções"
+        #  keyerror https://docs.python.org/3/library/exceptions.html
+        raise ValueError("Ta errada a bagaça")
 
 
 def filter_by_salary_range(
